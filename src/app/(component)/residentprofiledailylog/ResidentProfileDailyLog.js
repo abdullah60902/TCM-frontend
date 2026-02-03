@@ -34,7 +34,7 @@ const ResidentProfileDailyLog = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/daily-log/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/daily-log/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -49,7 +49,7 @@ const ResidentProfileDailyLog = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/daily-log/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/daily-log/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -87,7 +87,7 @@ const ResidentProfileDailyLog = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/daily-log/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/daily-log/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -121,7 +121,7 @@ const ResidentProfileDailyLog = ({ clientId }) => {
     try {
       if (editingLogId) {
         // Update
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/daily-log/${editingLogId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/daily-log/${editingLogId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const ResidentProfileDailyLog = ({ clientId }) => {
         }
       } else {
         // Create
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/daily-log", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/daily-log", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

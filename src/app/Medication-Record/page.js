@@ -157,7 +157,7 @@ const Page = () => {
     const fetchPatients = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/client", {
+        const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/client", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPatients(res.data.clients);
@@ -174,7 +174,7 @@ const Page = () => {
       const token = localStorage.getItem("token");
     try {
       setLoading(true);
-      const res = await axios.get(`https://control-panel-backend-k6fr.vercel.app/medications/client/${id}`, {
+      const res = await axios.get(`https://admin-panel-backend-alpha.vercel.app/medications/client/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMedicationsn(res.data);
@@ -407,7 +407,7 @@ const handleChangeCare = (e) => {
 
       // 🔹 Update only the status field
       await axios.put(
-        `https://control-panel-backend-k6fr.vercel.app/medications/${id}`,
+        `https://admin-panel-backend-alpha.vercel.app/medications/${id}`,
         { status: newStatus },
         config
       );
@@ -415,7 +415,7 @@ const handleChangeCare = (e) => {
       toast.success(`Status updated to ${newStatus}`);
 
       // 🔁 Refresh medications after update
-      const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/medications", config);
+      const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/medications", config);
       setMedications(res.data);
     } catch (err) {
       console.error("❌ Status Update Error:", err);
@@ -476,13 +476,13 @@ const handleSubmitCare = async (e) => {
     let response;
     if (editingCareId) {
       response = await axios.put(
-        `https://control-panel-backend-k6fr.vercel.app/medication-administration/${editingCareId}`,
+        `https://admin-panel-backend-alpha.vercel.app/medication-administration/${editingCareId}`,
         data,
         config
       );
     } else {
       response = await axios.post(
-        "https://control-panel-backend-k6fr.vercel.app/medication-administration",
+        "https://admin-panel-backend-alpha.vercel.app/medication-administration",
         data,
         config
       );
@@ -508,7 +508,7 @@ const handleSubmitCare = async (e) => {
 
     // ✅ Refresh list
     const res = await axios.get(
-      "https://control-panel-backend-k6fr.vercel.app/medication-administration",
+      "https://admin-panel-backend-alpha.vercel.app/medication-administration",
       config
     );
     setMedications(res.data);
@@ -532,7 +532,7 @@ const handleSubmitCare = async (e) => {
       return;
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`https://control-panel-backend-k6fr.vercel.app/medication-administration/${id}`, {
+      await axios.delete(`https://admin-panel-backend-alpha.vercel.app/medication-administration/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMedications((prev) => prev.filter((med) => med._id !== id));
@@ -553,7 +553,7 @@ const handleSubmitCare = async (e) => {
     if (!user || (user.role === "Client" && !Array.isArray(user.clients))) return;
 
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/medication-administration", {
+      .get("https://admin-panel-backend-alpha.vercel.app/medication-administration", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -583,7 +583,7 @@ const handleSubmitCare = async (e) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/client", {
+      .get("https://admin-panel-backend-alpha.vercel.app/client", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -33,7 +33,7 @@ The **Documents Management** module acts as a central repository for all critica
 
 ## 3. 🔌 API Reference
 
-### Base URL: `https://control-panel-backend-k6fr.vercel.app/staff-documents`
+### Base URL: `https://admin-panel-backend-alpha.vercel.app/staff-documents`
 
 ### Key Endpoints
 *   **GET** `/` - Fetch all document records.

@@ -89,7 +89,7 @@ ResidentProfileCarePlan.displayName = "ResidentProfileCarePlan";
       let res;
       if (editingPlanId) {
         res = await axios.put(
-          `https://control-panel-backend-k6fr.vercel.app/carePlanning/${editingPlanId}`,
+          `https://admin-panel-backend-alpha.vercel.app/carePlanning/${editingPlanId}`,
           fd,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -100,7 +100,7 @@ ResidentProfileCarePlan.displayName = "ResidentProfileCarePlan";
         );
       } else {
         res = await axios.post(
-          "https://control-panel-backend-k6fr.vercel.app/carePlanning",
+          "https://admin-panel-backend-alpha.vercel.app/carePlanning",
           fd,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -146,7 +146,7 @@ ResidentProfileCarePlan.displayName = "ResidentProfileCarePlan";
       if (formData.nextReviewDate) fd.append("reviewDate", formData.nextReviewDate);
 
       const res = await axios.put(
-        `https://control-panel-backend-k6fr.vercel.app/carePlanning/${viewPlan._id}`,
+        `https://admin-panel-backend-alpha.vercel.app/carePlanning/${viewPlan._id}`,
         fd,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -368,7 +368,7 @@ const planTypes = [
 const handleDelete = async (id) => {
   const token = localStorage.getItem("token");
 
-  await fetch(`https://control-panel-backend-k6fr.vercel.app/carePlanning/${id}`, {
+  await fetch(`https://admin-panel-backend-alpha.vercel.app/carePlanning/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -384,7 +384,7 @@ const handleDelete = async (id) => {
 
   const token = localStorage.getItem("token");
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/carePlanning/client/${clientId}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/carePlanning/client/${clientId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -410,7 +410,7 @@ useEffect(() => {
   const fetchArchived = async () => {
     try {
       // Prefer client-specific endpoint if backend provides it, otherwise fallback to general endpoint and filter
-      const url = `https://control-panel-backend-k6fr.vercel.app/carePlanning/older-than-six-months/client/${clientId}`;
+      const url = `https://admin-panel-backend-alpha.vercel.app/carePlanning/older-than-six-months/client/${clientId}`;
       const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
       // Expect { plans } or an array directly depending on backend
       const data = res.data.plans || res.data;
@@ -419,7 +419,7 @@ useEffect(() => {
       console.warn("Failed to fetch archived care plans, trying fallback...", err.message);
       try {
         // Fallback: fetch general older-than-six-months and filter by client
-        const res2 = await axios.get("https://control-panel-backend-k6fr.vercel.app/carePlanning/older-than-six-months", { headers: { Authorization: `Bearer ${token}` } });
+        const res2 = await axios.get("https://admin-panel-backend-alpha.vercel.app/carePlanning/older-than-six-months", { headers: { Authorization: `Bearer ${token}` } });
         const data2 = res2.data.plans || res2.data;
         setArchivedPlans((Array.isArray(data2) ? data2 : []).filter(p => p.client && (p.client._id === clientId || String(p.client) === String(clientId))));
       } catch (e) {

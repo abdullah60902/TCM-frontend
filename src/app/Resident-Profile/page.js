@@ -71,14 +71,14 @@ useEffect(() => {
 
   const token = localStorage.getItem("token");
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
     .then(data => setClient(data))
     .catch(err => console.log(err));
 
-     fetch(`https://control-panel-backend-k6fr.vercel.app/carePlanning/client/${id}`, {
+     fetch(`https://admin-panel-backend-alpha.vercel.app/carePlanning/client/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
@@ -475,7 +475,7 @@ const tabs = [
 
         // --- SECTION: PBS PLANS ---
         if (selectedExportModules.includes("pbs")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -523,7 +523,7 @@ const tabs = [
 
         // --- SECTION: RISK ASSESSMENTS ---
         if (selectedExportModules.includes("risk")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/risk-assessment/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/risk-assessment/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -572,9 +572,9 @@ const tabs = [
 
         // --- SECTION: MEDICATION (eMAR) ---
         if (selectedExportModules.includes("medication")) {
-            const resMeds = await fetch(`https://control-panel-backend-k6fr.vercel.app/medications/client/${id}`, config);
+            const resMeds = await fetch(`https://admin-panel-backend-alpha.vercel.app/medications/client/${id}`, config);
             const meds = await resMeds.json();
-            const resAdmin = await fetch(`https://control-panel-backend-k6fr.vercel.app/medication-administration`, config);
+            const resAdmin = await fetch(`https://admin-panel-backend-alpha.vercel.app/medication-administration`, config);
             const allAdmin = await resAdmin.json();
             const myAdmin = allAdmin.filter(a => (a.client?._id || a.client) === id);
 
@@ -631,7 +631,7 @@ const tabs = [
 
         // --- SECTION: GOALS ---
         if (selectedExportModules.includes("goals")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/goals/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/goals/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -670,7 +670,7 @@ const tabs = [
 
         // --- SECTION: DAILY LOGS ---
         if (selectedExportModules.includes("logs")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/daily-log/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/daily-log/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -706,7 +706,7 @@ const tabs = [
 
         // --- SECTION: CONSENT ---
         if (selectedExportModules.includes("consent")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/consent/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/consent/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -731,7 +731,7 @@ const tabs = [
 
         // --- SECTION: HANDOVERS ---
         if (selectedExportModules.includes("handovers")) {
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/handover/client/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/handover/client/${id}`, config);
             const records = await res.json();
             if (records && records.length > 0) {
                 checkPageBreak();
@@ -767,7 +767,7 @@ const tabs = [
             doc.setFontSize(18);
             doc.text("10. General Documents", 14, yPos);
             yPos += 8;
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/staff-documents/staff/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/staff-documents/staff/${id}`, config);
             const docs = await res.json();
             if (docs && docs.length > 0) {
                 for (let d of docs) {
@@ -917,7 +917,7 @@ transition-all duration-300 gap-6"
           const formData = new FormData();
           formData.append("profileImage", file);
 
-          const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/client/${id}/photo`, {
+          const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/client/${id}/photo`, {
             method: "PUT",
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
             body: formData,
@@ -989,7 +989,7 @@ transition-all duration-300 gap-6"
   onClick={async () => {
     if (!confirm("Are you sure you want to delete this resident profile? This action will permanently remove all associated records and cannot be undone.")) return;
 
-    const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+    const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

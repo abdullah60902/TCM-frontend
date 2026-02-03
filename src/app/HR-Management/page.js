@@ -272,8 +272,8 @@ const Page = () => {
     };
 
     const request = editingUserId
-      ? axios.put(`https://control-panel-backend-k6fr.vercel.app/hr/${editingUserId}`, payload, config)
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/hr`, payload, config);
+      ? axios.put(`https://admin-panel-backend-alpha.vercel.app/hr/${editingUserId}`, payload, config)
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/hr`, payload, config);
 
     request
       .then((res) => {
@@ -294,7 +294,7 @@ const Page = () => {
         });
         setShowModal3(false);
         toast.success("Add successfuly");
-        return axios.get("https://control-panel-backend-k6fr.vercel.app/hr", config);
+        return axios.get("https://admin-panel-backend-alpha.vercel.app/hr", config);
       })
       .then((res) => {
         setStaffData(res.data.allHr);
@@ -311,7 +311,7 @@ const Page = () => {
     const fetchHR = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/hr", {
+        const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/hr", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStaffData(res.data.allHr); // no .users needed, your backend returns an array
@@ -359,7 +359,7 @@ const Page = () => {
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/hr/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/hr/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

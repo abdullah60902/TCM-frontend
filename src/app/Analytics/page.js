@@ -132,7 +132,7 @@ const allowedNavItems =
   useEffect(() => {
     if (activeTab === "analytics") {
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/analytics/care-settings", {
+        .get("https://admin-panel-backend-alpha.vercel.app/analytics/care-settings", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
         .then((res) => setAnalytics(res.data))
@@ -144,7 +144,7 @@ const allowedNavItems =
   useEffect(() => {
     if (activeTab === "compliance") {
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/compliance/audit-logs", {
+        .get("https://admin-panel-backend-alpha.vercel.app/compliance/audit-logs", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
         .then((res) => setComplianceAuditLogs(res.data))
@@ -160,7 +160,7 @@ const allowedNavItems =
   useEffect(() => {
     if (activeTab === "medication") {
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/medications/audit-logs", {
+        .get("https://admin-panel-backend-alpha.vercel.app/medications/audit-logs", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -178,7 +178,7 @@ const allowedNavItems =
   useEffect(() => {
     if (activeTab === "careplan") {
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/carePlanning/audit-logs", {
+        .get("https://admin-panel-backend-alpha.vercel.app/carePlanning/audit-logs", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
         .then((res) => setCarePlanAuditLogs(res.data))
@@ -193,7 +193,7 @@ const allowedNavItems =
     if (window.confirm("Delete this compliance audit log?")) {
       try {
         await axios.delete(
-          `https://control-panel-backend-k6fr.vercel.app/compliance/audit-logs/${id}`,
+          `https://admin-panel-backend-alpha.vercel.app/compliance/audit-logs/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -347,7 +347,7 @@ const handleDownloadCsv = (data, type) => {
   const handleDeleteMedicationAudit = async (id) => {
     if (window.confirm("Delete this medication audit log?")) {
       try {
-        await axios.delete(`https://control-panel-backend-k6fr.vercel.app/medications/audit-logs/${id}`, {
+        await axios.delete(`https://admin-panel-backend-alpha.vercel.app/medications/audit-logs/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -368,7 +368,7 @@ const handleDownloadCsv = (data, type) => {
     if (window.confirm("Delete this care plan audit log?")) {
       try {
         await axios.delete(
-          `https://control-panel-backend-k6fr.vercel.app/care-planning/audit-logs/${id}`,
+          `https://admin-panel-backend-alpha.vercel.app/care-planning/audit-logs/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

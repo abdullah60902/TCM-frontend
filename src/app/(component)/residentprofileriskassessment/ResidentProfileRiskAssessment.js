@@ -39,7 +39,7 @@ const ResidentProfileRiskAssessment = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/risk-assessment/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/risk-assessment/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -54,7 +54,7 @@ const ResidentProfileRiskAssessment = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/risk-assessment/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/risk-assessment/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -105,7 +105,7 @@ const ResidentProfileRiskAssessment = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/risk-assessment/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/risk-assessment/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -138,7 +138,7 @@ const ResidentProfileRiskAssessment = ({ clientId }) => {
     try {
       if (editingPlanId) {
         // Update
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/risk-assessment/${editingPlanId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/risk-assessment/${editingPlanId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -157,7 +157,7 @@ const ResidentProfileRiskAssessment = ({ clientId }) => {
         }
       } else {
         // Create
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/risk-assessment", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/risk-assessment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

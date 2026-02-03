@@ -137,8 +137,8 @@ const handleSubmit = async (e) => {
   console.log("Payload:", payload); // ✅ DEBUG payload
 
   const request = editingId
-    ? axios.put(`https://control-panel-backend-k6fr.vercel.app/performance/${editingId}`, payload, config)
-    : axios.post(`https://control-panel-backend-k6fr.vercel.app/performance`, payload, config);
+    ? axios.put(`https://admin-panel-backend-alpha.vercel.app/performance/${editingId}`, payload, config)
+    : axios.post(`https://admin-panel-backend-alpha.vercel.app/performance`, payload, config);
 
   request
     .then(res => {
@@ -157,7 +157,7 @@ const handleSubmit = async (e) => {
         feedbackNotes: '',
         appraisalReminderDate: ''
       });
-      return axios.get("https://control-panel-backend-k6fr.vercel.app/performance", config)
+      return axios.get("https://admin-panel-backend-alpha.vercel.app/performance", config)
         .then(res => {
           setPerformanceData(res.data.data);
           setFilteredPerformance(res.data.data);
@@ -175,7 +175,7 @@ const fetchPerformance = async () => {
   const token = localStorage.getItem("token");
   const config = { headers: { Authorization: `Bearer ${token}` } };
   try {
-    const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/performance", config);
+    const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/performance", config);
     setPerformanceData(res.data.data);
     setFilteredPerformance(res.data.data);
   } catch (err) {
@@ -186,7 +186,7 @@ const handleDelete = async (id) => {
   if (!window.confirm("Confirm delete?")) return;
   const token = localStorage.getItem("token");
   try {
-    await axios.delete(`https://control-panel-backend-k6fr.vercel.app/performance/${id}`, {
+    await axios.delete(`https://admin-panel-backend-alpha.vercel.app/performance/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     toast.success("Record deleted successfully");
@@ -233,7 +233,7 @@ useEffect(() => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('https://control-panel-backend-k6fr.vercel.app/hr', {
+    axios.get('https://admin-panel-backend-alpha.vercel.app/hr', {
       headers: {
         Authorization: `Bearer ${token}`,
       }
@@ -255,7 +255,7 @@ useEffect(() => {
 
   const checkReminders = async () => {
     try {
-      const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/performance/reminders/due", {
+      const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/performance/reminders/due", {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -74,7 +74,7 @@ All endpoints require JWT Bearer token authentication.
 ```javascript
 const fetchCarePlans = async () => {
   const token = localStorage.getItem("token");
-  const response = await axios.get("https://control-panel-backend-k6fr.vercel.app/carePlanning", {
+  const response = await axios.get("https://admin-panel-backend-alpha.vercel.app/carePlanning", {
     headers: { Authorization: `Bearer ${token}` }
   });
   return response.data;
@@ -115,7 +115,7 @@ const fetchCarePlans = async () => {
 const fetchClientCarePlans = async (clientId) => {
   const token = localStorage.getItem("token");
   const response = await fetch(
-    `https://control-panel-backend-k6fr.vercel.app/carePlanning/client/${clientId}`,
+    `https://admin-panel-backend-alpha.vercel.app/carePlanning/client/${clientId}`,
     {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -218,7 +218,7 @@ const createCarePlan = async (formData, attachments, clientId) => {
   });
   
   const response = await axios.post(
-    "https://control-panel-backend-k6fr.vercel.app/carePlanning",
+    "https://admin-panel-backend-alpha.vercel.app/carePlanning",
     fd,
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -288,7 +288,7 @@ const updateCarePlan = async (id, formData, attachments) => {
   });
   
   const response = await axios.put(
-    `https://control-panel-backend-k6fr.vercel.app/carePlanning/${id}`,
+    `https://admin-panel-backend-alpha.vercel.app/carePlanning/${id}`,
     fd,
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -320,7 +320,7 @@ const updateCarePlan = async (id, formData, attachments) => {
 ```javascript
 const deleteCarePlan = async (id) => {
   const token = localStorage.getItem("token");
-  await axios.delete(`https://control-panel-backend-k6fr.vercel.app/carePlanning/${id}`, {
+  await axios.delete(`https://admin-panel-backend-alpha.vercel.app/carePlanning/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
@@ -369,7 +369,7 @@ const deleteCarePlan = async (id) => {
 const fetchAlerts = async () => {
   const token = localStorage.getItem("token");
   const response = await axios.get(
-    "https://control-panel-backend-k6fr.vercel.app/carePlanning/alerts",
+    "https://admin-panel-backend-alpha.vercel.app/carePlanning/alerts",
     {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -430,7 +430,7 @@ useEffect(() => {
 const markAsReviewed = async (id, newReviewDate) => {
   const token = localStorage.getItem("token");
   const response = await axios.put(
-    `https://control-panel-backend-k6fr.vercel.app/carePlanning/${id}/mark-reviewed`,
+    `https://admin-panel-backend-alpha.vercel.app/carePlanning/${id}/mark-reviewed`,
     { newReviewDate },
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -481,7 +481,7 @@ const fetchArchivedPlans = async (clientId) => {
   try {
     // Try client-specific endpoint first
     const response = await axios.get(
-      `https://control-panel-backend-k6fr.vercel.app/carePlanning/older-than-six-months/client/${clientId}`,
+      `https://admin-panel-backend-alpha.vercel.app/carePlanning/older-than-six-months/client/${clientId}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -490,7 +490,7 @@ const fetchArchivedPlans = async (clientId) => {
   } catch (err) {
     // Fallback to general endpoint and filter
     const response = await axios.get(
-      "https://control-panel-backend-k6fr.vercel.app/carePlanning/older-than-six-months",
+      "https://admin-panel-backend-alpha.vercel.app/carePlanning/older-than-six-months",
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -545,7 +545,7 @@ const fetchArchivedPlans = async (clientId) => {
 ```javascript
 try {
   const response = await axios.post(
-    "https://control-panel-backend-k6fr.vercel.app/carePlanning",
+    "https://admin-panel-backend-alpha.vercel.app/carePlanning",
     formData,
     { headers: { Authorization: `Bearer ${token}` } }
   );
@@ -768,7 +768,7 @@ console.log(`${archived.length} archived plans found`);
 ```javascript
 // Login
 const login = async (email, password) => {
-  const response = await axios.post("https://control-panel-backend-k6fr.vercel.app/auth/login", {
+  const response = await axios.post("https://admin-panel-backend-alpha.vercel.app/auth/login", {
     email,
     password
   });

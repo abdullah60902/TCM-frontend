@@ -425,13 +425,13 @@ const rows = [
     let response;
     if (editingUserId) {
       response = await axios.put(
-        `https://control-panel-backend-k6fr.vercel.app/compliance/${editingUserId}`,
+        `https://admin-panel-backend-alpha.vercel.app/compliance/${editingUserId}`,
         data,
         config
       );
     } else {
       response = await axios.post(
-        "https://control-panel-backend-k6fr.vercel.app/compliance",
+        "https://admin-panel-backend-alpha.vercel.app/compliance",
         data,
         config
       );
@@ -457,7 +457,7 @@ const rows = [
     setAttachments([]);
 
     // ✅ Refresh compliance list
-    const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/compliance", config);
+    const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/compliance", config);
     setStaffData(res.data);
   } catch (err) {
     console.error("❌ Full Error:", err);
@@ -503,7 +503,7 @@ const rows = [
     const fetchHR = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/compliance", {
+        const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/compliance", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStaffData(res.data); // no .users needed, your backend returns an array
@@ -522,7 +522,7 @@ const rows = [
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/compliance/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/compliance/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

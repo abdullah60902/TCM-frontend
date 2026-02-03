@@ -76,7 +76,7 @@ const fetchLowStock = async () => {
         const token = localStorage.getItem("token");
   try {
     const res = await axios.get(
-      "https://control-panel-backend-k6fr.vercel.app/medications/low-stock",
+      "https://admin-panel-backend-alpha.vercel.app/medications/low-stock",
       {
             headers: { Authorization: `Bearer ${token}` },
       }
@@ -95,7 +95,7 @@ const fetchLowStock = async () => {
             const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.get('https://control-panel-backend-k6fr.vercel.app/carePlanning/alerts', {
+      const res = await axios.get('https://admin-panel-backend-alpha.vercel.app/carePlanning/alerts', {
             headers: { Authorization: `Bearer ${token}` },
       });
 

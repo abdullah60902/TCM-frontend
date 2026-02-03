@@ -273,11 +273,11 @@ const Page = () => {
 
     const request = editingUserId
       ? axios.put(
-          `https://control-panel-backend-k6fr.vercel.app/client/${editingUserId}`,
+          `https://admin-panel-backend-alpha.vercel.app/client/${editingUserId}`,
           payload,
           config
         )
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/client`, payload, config);
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/client`, payload, config);
 
     request
       .then((res) => {
@@ -297,7 +297,7 @@ const Page = () => {
         setShowModal(false);
         setLoading(false);
         toast.success("Add successfly");
-        return axios.get("https://control-panel-backend-k6fr.vercel.app/client", config);
+        return axios.get("https://admin-panel-backend-alpha.vercel.app/client", config);
       })
       .then((res) => {
         setStaffData(res.data.clients || res.data); // Adjust based on your API response structure
@@ -320,7 +320,7 @@ const Page = () => {
       if (!Array.isArray(user.clients)) return;
 
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/client", {
+        .get("https://admin-panel-backend-alpha.vercel.app/client", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -340,7 +340,7 @@ const Page = () => {
     } else {
       // Admin or Staff — all clients
       axios
-        .get("https://control-panel-backend-k6fr.vercel.app/client", {
+        .get("https://admin-panel-backend-alpha.vercel.app/client", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -375,7 +375,7 @@ const Page = () => {
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

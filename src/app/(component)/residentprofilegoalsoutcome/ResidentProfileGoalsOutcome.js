@@ -32,7 +32,7 @@ const ResidentProfileGoalsOutcome = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/goals/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/goals/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -47,7 +47,7 @@ const ResidentProfileGoalsOutcome = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/goals/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/goals/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -83,7 +83,7 @@ const ResidentProfileGoalsOutcome = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/goals/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/goals/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -115,7 +115,7 @@ const ResidentProfileGoalsOutcome = ({ clientId }) => {
     try {
       if (editingGoalId) {
         // Update
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/goals/${editingGoalId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/goals/${editingGoalId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -134,7 +134,7 @@ const ResidentProfileGoalsOutcome = ({ clientId }) => {
         }
       } else {
         // Create
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/goals", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/goals", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

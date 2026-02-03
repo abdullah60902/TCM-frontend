@@ -44,7 +44,7 @@ const ResidentProfilePBSplan = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -60,7 +60,7 @@ const ResidentProfilePBSplan = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -102,7 +102,7 @@ const ResidentProfilePBSplan = ({ clientId }) => {
     try {
       if (editingPlanId) {
         // ✅ Update existing plan
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/${editingPlanId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/${editingPlanId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const ResidentProfilePBSplan = ({ clientId }) => {
         }
       } else {
         // ✅ Create new plan
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/pbs-plan", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/pbs-plan", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -189,7 +189,7 @@ const ResidentProfilePBSplan = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

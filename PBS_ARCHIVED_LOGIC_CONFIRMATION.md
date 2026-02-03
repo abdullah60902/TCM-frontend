@@ -24,7 +24,7 @@ I have updated `ResidentProfilePBSplan.js` to consume this endpoint exactly as r
       if (!showArchived || !clientId) return;
       
       // Calls your endpoint
-      fetch(`https://control-panel-backend-k6fr.vercel.app/pbs-plan/older-than-six-months`, ...)
+      fetch(`https://admin-panel-backend-alpha.vercel.app/pbs-plan/older-than-six-months`, ...)
         .then(res => res.json())
         .then(data => {
             // Filters the response to show only this client's plans

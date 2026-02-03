@@ -29,7 +29,7 @@ const StaffProfileDocuments = ({ staffId }) => {
   useEffect(() => {
     if (!staffId) return;
 
-    fetch(`https://control-panel-backend-k6fr.vercel.app/staff-documents/staff/${staffId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/staff-documents/staff/${staffId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -57,7 +57,7 @@ const StaffProfileDocuments = ({ staffId }) => {
     fd.append("notes", formData.notes);
     fd.append(formData.category, formData.file);
 
-    const res = await fetch("https://control-panel-backend-k6fr.vercel.app/staff-documents", {
+    const res = await fetch("https://admin-panel-backend-alpha.vercel.app/staff-documents", {
       method: "POST",
       body: fd,
       headers: {
@@ -72,7 +72,7 @@ const StaffProfileDocuments = ({ staffId }) => {
     setFormData({ category: "", expiryDate: "", notes: "", file: null });
 
     // refresh data
-    fetch(`https://control-panel-backend-k6fr.vercel.app/staff-documents/staff/${staffId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/staff-documents/staff/${staffId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((res) => res.json())
@@ -85,7 +85,7 @@ const StaffProfileDocuments = ({ staffId }) => {
   const deleteDoc = async (id) => {
     if (!confirm("Delete this document?")) return;
 
-    await fetch(`https://control-panel-backend-k6fr.vercel.app/staff-documents/${id}`, {
+    await fetch(`https://admin-panel-backend-alpha.vercel.app/staff-documents/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });

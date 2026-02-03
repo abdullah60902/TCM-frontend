@@ -62,11 +62,11 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
       // Trying client-specific endpoint first
       let medsData = [];
       try {
-          const res = await axios.get(`https://control-panel-backend-k6fr.vercel.app/medications/client/${clientId}`, config);
+          const res = await axios.get(`https://admin-panel-backend-alpha.vercel.app/medications/client/${clientId}`, config);
           medsData = res.data;
       } catch (e) {
           // Fallback: Fetch all and filter if specific endpoint fails or doesn't exist
-          const resAll = await axios.get(`https://control-panel-backend-k6fr.vercel.app/medications`, config);
+          const resAll = await axios.get(`https://admin-panel-backend-alpha.vercel.app/medications`, config);
           // Filter carefully matching ObjectId or String
           medsData = resAll.data.filter(m => {
              const mClientId = m.client?._id || m.client;
@@ -77,7 +77,7 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
 
 
       // 2. Fetch Administration History
-      const adminRes = await axios.get(`https://control-panel-backend-k6fr.vercel.app/medication-administration`, config);
+      const adminRes = await axios.get(`https://admin-panel-backend-alpha.vercel.app/medication-administration`, config);
       const allHistory = Array.isArray(adminRes.data) ? adminRes.data : [];
       
       // Filter for this client
@@ -112,10 +112,10 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
         };
 
         if(editingId) {
-            await axios.put(`https://control-panel-backend-k6fr.vercel.app/medications/${editingId}`, payload, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.put(`https://admin-panel-backend-alpha.vercel.app/medications/${editingId}`, payload, { headers: { Authorization: `Bearer ${token}` } });
             alert("Medication updated!");
         } else {
-            await axios.post(`https://control-panel-backend-k6fr.vercel.app/medications`, payload, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.post(`https://admin-panel-backend-alpha.vercel.app/medications`, payload, { headers: { Authorization: `Bearer ${token}` } });
             alert("Medication added!");
         }
         setShowForm(false);
@@ -143,10 +143,10 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
         };
 
         if (editingAdminId) {
-            await axios.put(`https://control-panel-backend-k6fr.vercel.app/medication-administration/${editingAdminId}`, payload, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.put(`https://admin-panel-backend-alpha.vercel.app/medication-administration/${editingAdminId}`, payload, { headers: { Authorization: `Bearer ${token}` } });
             alert("Dose record updated successfully!");
         } else {
-            await axios.post(`https://control-panel-backend-k6fr.vercel.app/medication-administration`, payload, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.post(`https://admin-panel-backend-alpha.vercel.app/medication-administration`, payload, { headers: { Authorization: `Bearer ${token}` } });
             alert("Dose recorded successfully!");
         }
         
@@ -164,7 +164,7 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
       if(!confirm("Delete this medication order?")) return;
       const token = localStorage.getItem("token");
       try {
-          await axios.delete(`https://control-panel-backend-k6fr.vercel.app/medications/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+          await axios.delete(`https://admin-panel-backend-alpha.vercel.app/medications/${id}`, { headers: { Authorization: `Bearer ${token}` } });
           fetchData();
       } catch(err) {
           console.error(err); alert("Failed delete");
@@ -175,7 +175,7 @@ const ResidentProfileMedicationEMAR = ({ clientId }) => {
       if(!confirm("Delete this administration record?")) return;
       const token = localStorage.getItem("token");
       try {
-          await axios.delete(`https://control-panel-backend-k6fr.vercel.app/medication-administration/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+          await axios.delete(`https://admin-panel-backend-alpha.vercel.app/medication-administration/${id}`, { headers: { Authorization: `Bearer ${token}` } });
           fetchData();
       } catch(err) {
           console.error(err); alert("Failed delete");

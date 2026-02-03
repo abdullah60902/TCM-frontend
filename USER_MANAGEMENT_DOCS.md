@@ -35,7 +35,7 @@ The **User Management Module** ensures secure access control across the platform
 
 ## 3. 🔌 API Reference
 
-### Base URL: `https://control-panel-backend-k6fr.vercel.app/user`
+### Base URL: `https://admin-panel-backend-alpha.vercel.app/user`
 
 ### Endpoints
 *   **GET** `/` - List all system users.

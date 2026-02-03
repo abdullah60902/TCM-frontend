@@ -197,7 +197,7 @@ This comprehensive profile page includes **10 major sections** organized in tabs
 - **Edit Resident:** Click edit icon to populate form with existing data
 - **Delete Resident:** Click delete icon with confirmation dialog
 - **Validation:** All required fields validated before submission
-- **API Integration:** Full CRUD operations with backend at `https://control-panel-backend-k6fr.vercel.app/client`
+- **API Integration:** Full CRUD operations with backend at `https://admin-panel-backend-alpha.vercel.app/client`
 
 **User Flow:**
 1. Navigate to `/Client-Management`

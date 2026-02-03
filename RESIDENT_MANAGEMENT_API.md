@@ -57,7 +57,7 @@ const token = localStorage.getItem("token");
 ```javascript
 const fetchResidents = async () => {
   const token = localStorage.getItem("token");
-  const response = await axios.get("https://control-panel-backend-k6fr.vercel.app/client", {
+  const response = await axios.get("https://admin-panel-backend-alpha.vercel.app/client", {
     headers: { Authorization: `Bearer ${token}` }
   });
   return response.data.clients;
@@ -105,7 +105,7 @@ const fetchResidents = async () => {
 ```javascript
 const fetchResident = async (id) => {
   const token = localStorage.getItem("token");
-  const response = await fetch(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+  const response = await fetch(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return await response.json();
@@ -158,7 +158,7 @@ const createResident = async (formData) => {
   };
   
   const response = await axios.post(
-    "https://control-panel-backend-k6fr.vercel.app/client",
+    "https://admin-panel-backend-alpha.vercel.app/client",
     payload,
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -216,7 +216,7 @@ const updateResident = async (id, formData) => {
   };
   
   const response = await axios.put(
-    `https://control-panel-backend-k6fr.vercel.app/client/${id}`,
+    `https://admin-panel-backend-alpha.vercel.app/client/${id}`,
     payload,
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -247,7 +247,7 @@ const updateResident = async (id, formData) => {
 ```javascript
 const deleteResident = async (id) => {
   const token = localStorage.getItem("token");
-  await axios.delete(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+  await axios.delete(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
@@ -285,7 +285,7 @@ const deleteResident = async (id) => {
 const fetchDocuments = async (clientId) => {
   const token = localStorage.getItem("token");
   const response = await fetch(
-    `https://control-panel-backend-k6fr.vercel.app/resident-documents/client/${clientId}`,
+    `https://admin-panel-backend-alpha.vercel.app/resident-documents/client/${clientId}`,
     {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -339,7 +339,7 @@ const uploadDocument = async (clientId, formData) => {
   fd.append("notes", formData.notes);
   fd.append("file", formData.file);
   
-  const response = await fetch("https://control-panel-backend-k6fr.vercel.app/resident-documents", {
+  const response = await fetch("https://admin-panel-backend-alpha.vercel.app/resident-documents", {
     method: "POST",
     body: fd,
     headers: {
@@ -372,7 +372,7 @@ const uploadDocument = async (clientId, formData) => {
 ```javascript
 const deleteDocument = async (id) => {
   const token = localStorage.getItem("token");
-  await fetch(`https://control-panel-backend-k6fr.vercel.app/resident-documents/${id}`, {
+  await fetch(`https://admin-panel-backend-alpha.vercel.app/resident-documents/${id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` }
   });
@@ -657,7 +657,7 @@ const deleteDocument = async (id) => {
 ### Frontend Error Handling Example:
 ```javascript
 try {
-  const response = await axios.get(`https://control-panel-backend-k6fr.vercel.app/client/${id}`, {
+  const response = await axios.get(`https://admin-panel-backend-alpha.vercel.app/client/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return response.data;

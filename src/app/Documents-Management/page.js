@@ -171,7 +171,7 @@ const Page = () => {
     if (!token) return;
 
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/staff-documents", {
+      .get("https://admin-panel-backend-alpha.vercel.app/staff-documents", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -223,7 +223,7 @@ const Page = () => {
     if (!token) return;
 
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/hr", {
+      .get("https://admin-panel-backend-alpha.vercel.app/hr", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -468,11 +468,11 @@ const Page = () => {
 
     const request = editingUserId
       ? axios.put(
-          `https://control-panel-backend-k6fr.vercel.app/staff-documents/${editingUserId}`,
+          `https://admin-panel-backend-alpha.vercel.app/staff-documents/${editingUserId}`,
           data,
           config
         )
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/staff-documents`, data, config);
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/staff-documents`, data, config);
 
     request
       .then((res) => {
@@ -492,7 +492,7 @@ const Page = () => {
         setLoading(false);
         toast.success("Saved successfully");
 
-        return axios.get(`https://control-panel-backend-k6fr.vercel.app/staff-documents`, config);
+        return axios.get(`https://admin-panel-backend-alpha.vercel.app/staff-documents`, config);
       })
       .then((res) => {
         setStaffData(res.data);
@@ -536,7 +536,7 @@ const Page = () => {
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/staff-documents/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/staff-documents/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {

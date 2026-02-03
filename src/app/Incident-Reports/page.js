@@ -151,7 +151,7 @@ const [previewVideo, setPreviewVideo] = useState(null);
     const fetchIncidents = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/incident/all", {
+        const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/incident/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIncidentData(res.data.incidents);
@@ -410,11 +410,11 @@ const handleDownloadCsv = (item) => {
 
     const request = editingIncidentId
       ? axios.put(
-          `https://control-panel-backend-k6fr.vercel.app/incident/update/${editingIncidentId}`,
+          `https://admin-panel-backend-alpha.vercel.app/incident/update/${editingIncidentId}`,
           data,
           config
         )
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/incident/`, data, config);
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/incident/`, data, config);
 
     request
       .then((res) => {
@@ -437,7 +437,7 @@ const handleDownloadCsv = (item) => {
         setAttachments([]);
         setShowModal2(false);
         toast.success("Add successfuly");
-        return axios.get("https://control-panel-backend-k6fr.vercel.app/incident/all", config);
+        return axios.get("https://admin-panel-backend-alpha.vercel.app/incident/all", config);
       })
       .then((res) => {
         setIncidentData(res.data.incidents);
@@ -456,7 +456,7 @@ const handleDownloadCsv = (item) => {
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/incident/delete/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/incident/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -475,7 +475,7 @@ const handleDownloadCsv = (item) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/client", {
+      .get("https://admin-panel-backend-alpha.vercel.app/client", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -501,14 +501,14 @@ const handleDownloadCsv = (item) => {
       };
 
       await axios.put(
-        `https://control-panel-backend-k6fr.vercel.app/incident/update/${id}`,
+        `https://admin-panel-backend-alpha.vercel.app/incident/update/${id}`,
         { status: newStatus },
         config
       );
 
       // ✅ Just like handleSubmit2
       const response = await axios.get(
-        "https://control-panel-backend-k6fr.vercel.app/incident/all",
+        "https://admin-panel-backend-alpha.vercel.app/incident/all",
         config
       );
       setIncidentData(response.data.incidents);
@@ -520,7 +520,7 @@ const handleDownloadCsv = (item) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/hr", {
+      .get("https://admin-panel-backend-alpha.vercel.app/hr", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

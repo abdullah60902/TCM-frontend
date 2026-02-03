@@ -63,21 +63,21 @@ useEffect(() => {
 
   const token = localStorage.getItem("token");
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/hr/${id}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/hr/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
     .then(data => setStaff(data))
     .catch(err => console.log(err));
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/training/staff/${id}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/training/staff/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
     .then(data => setTrainings(data))
     .catch(err => console.log(err));
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/performance/staff/${id}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/performance/staff/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
@@ -415,7 +415,7 @@ useEffect(() => {
             doc.text("2. Training & Certifications", 14, yPos);
             yPos += 8;
 
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/training/staff/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/training/staff/${id}`, config);
             const tData = await res.json();
             
             if (tData && tData.length > 0) {
@@ -467,7 +467,7 @@ useEffect(() => {
             doc.text("3. Performance & Appraisals", 14, yPos);
             yPos += 8;
 
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/performance/staff/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/performance/staff/${id}`, config);
             const perfData = await res.json();
 
             if (perfData && perfData.length > 0) {
@@ -547,7 +547,7 @@ useEffect(() => {
             doc.setFontSize(18);
             doc.text("5. General Documents", 14, yPos);
             yPos += 8;
-            const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/staff-documents/staff/${id}`, config);
+            const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/staff-documents/staff/${id}`, config);
             const docs = await res.json();
             if (docs && docs.length > 0) {
                 for (let d of docs) {
@@ -697,7 +697,7 @@ transition-all duration-300 gap-6"
           const formData = new FormData();
           formData.append("profileImage", file);
 
-          const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/hr/${id}/photo`, {
+          const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/hr/${id}/photo`, {
             method: "PUT",
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
             body: formData,
@@ -768,7 +768,7 @@ transition-all duration-300 gap-6"
   onClick={async () => {
     if (!confirm("Are you sure you want to delete this staff profile? This action will permanently remove all associated records and cannot be undone.")) return;
 
-    const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/hr/${id}`, {
+    const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/hr/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

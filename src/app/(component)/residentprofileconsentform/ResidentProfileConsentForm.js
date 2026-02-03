@@ -30,7 +30,7 @@ const ResidentProfileConsentForm = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/consent/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/consent/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -45,7 +45,7 @@ const ResidentProfileConsentForm = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/consent/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/consent/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -79,7 +79,7 @@ const ResidentProfileConsentForm = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/consent/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/consent/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -109,7 +109,7 @@ const ResidentProfileConsentForm = ({ clientId }) => {
     try {
       if (editingId) {
         // Update
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/consent/${editingId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/consent/${editingId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -128,7 +128,7 @@ const ResidentProfileConsentForm = ({ clientId }) => {
         }
       } else {
         // Create
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/consent", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/consent", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

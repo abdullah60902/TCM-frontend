@@ -13,7 +13,7 @@ useEffect(() => {
   const token = localStorage.getItem("token");
   console.log("Using token:", token);
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/hr/${staff}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/hr/${staff}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
     .then(async res => {
@@ -34,7 +34,7 @@ useEffect(() => {
 // Update a field in backend
 const updateField = async (field, value) => {
 try {
-await fetch(`https://control-panel-backend-k6fr.vercel.app/hr/${staff}`, {
+await fetch(`https://admin-panel-backend-alpha.vercel.app/hr/${staff}`, {
 method: "PUT",
 headers: {
 "Content-Type": "application/json",

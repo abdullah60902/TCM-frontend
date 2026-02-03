@@ -32,7 +32,7 @@ const ResidentProfileHandOver = ({ clientId }) => {
     if (!clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/handover/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/handover/client/${clientId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -47,7 +47,7 @@ const ResidentProfileHandOver = ({ clientId }) => {
     if (!showArchived || !clientId) return;
 
     const token = localStorage.getItem("token");
-    fetch(`https://control-panel-backend-k6fr.vercel.app/handover/older-than-six-months`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/handover/older-than-six-months`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -83,7 +83,7 @@ const ResidentProfileHandOver = ({ clientId }) => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/handover/${id}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/handover/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -115,7 +115,7 @@ const ResidentProfileHandOver = ({ clientId }) => {
     try {
       if (editingId) {
         // Update
-        const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/handover/${editingId}`, {
+        const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/handover/${editingId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -134,7 +134,7 @@ const ResidentProfileHandOver = ({ clientId }) => {
         }
       } else {
         // Create
-        const res = await fetch("https://control-panel-backend-k6fr.vercel.app/handover", {
+        const res = await fetch("https://admin-panel-backend-alpha.vercel.app/handover", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

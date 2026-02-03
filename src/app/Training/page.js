@@ -144,12 +144,12 @@ useEffect(() => {
   const refreshAndFetch = async () => {
     try {
       // ✅ First: Ask backend to refresh all statuses
-      await axios.put("https://control-panel-backend-k6fr.vercel.app/training/refresh-status", {}, {
+      await axios.put("https://admin-panel-backend-alpha.vercel.app/training/refresh-status", {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       // ✅ Then: Fetch all updated trainings
-      const response = await axios.get("https://control-panel-backend-k6fr.vercel.app/training", {
+      const response = await axios.get("https://admin-panel-backend-alpha.vercel.app/training", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -201,7 +201,7 @@ console.log("jkjkjdk",StaffData);
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://control-panel-backend-k6fr.vercel.app/hr", {
+      .get("https://admin-panel-backend-alpha.vercel.app/hr", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -475,11 +475,11 @@ console.log("jkjkjdk",StaffData);
 
     const request = editingUserId
       ? axios.put(
-          `https://control-panel-backend-k6fr.vercel.app/training/${editingUserId}`,
+          `https://admin-panel-backend-alpha.vercel.app/training/${editingUserId}`,
           formData,
           config
         )
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/training`, formData, config);
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/training`, formData, config);
 
     request
       .then((res) => {
@@ -503,7 +503,7 @@ console.log("jkjkjdk",StaffData);
         setLoading(false); // Reset loading state
         toast.success("Added successfully");
 
-        return axios.get(`https://control-panel-backend-k6fr.vercel.app/training`, config);
+        return axios.get(`https://admin-panel-backend-alpha.vercel.app/training`, config);
       })
       .then((res) => {
         setStaffData(res.data);
@@ -521,7 +521,7 @@ console.log("jkjkjdk",StaffData);
 
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://control-panel-backend-k6fr.vercel.app/training/${id}`, {
+      .delete(`https://admin-panel-backend-alpha.vercel.app/training/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -66,7 +66,7 @@ const [performanceData, setPerformanceData] = useState(performanceId || []);
   const token = localStorage.getItem("token");
   if (!id) return;
 
-  fetch(`https://control-panel-backend-k6fr.vercel.app/performance/staff/${id}`, {
+  fetch(`https://admin-panel-backend-alpha.vercel.app/performance/staff/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
@@ -106,8 +106,8 @@ const [performanceData, setPerformanceData] = useState(performanceId || []);
     console.log("Payload:", payload); // ✅ DEBUG payload
   
     const request = editingId
-      ? axios.put(`https://control-panel-backend-k6fr.vercel.app/performance/${editingId}`, payload, config)
-      : axios.post(`https://control-panel-backend-k6fr.vercel.app/performance`, payload, config);
+      ? axios.put(`https://admin-panel-backend-alpha.vercel.app/performance/${editingId}`, payload, config)
+      : axios.post(`https://admin-panel-backend-alpha.vercel.app/performance`, payload, config);
   
     request
       .then(res => {
@@ -126,7 +126,7 @@ const [performanceData, setPerformanceData] = useState(performanceId || []);
           feedbackNotes: '',
           appraisalReminderDate: ''
         });
-        return axios.get("https://control-panel-backend-k6fr.vercel.app/performance", config)
+        return axios.get("https://admin-panel-backend-alpha.vercel.app/performance", config)
           .then(res => {
             setPerformanceData(performanceId);
             setFilteredPerformance(performanceId);
@@ -149,7 +149,7 @@ useEffect(() => {
   const token = localStorage.getItem("token");
   const config = { headers: { Authorization: `Bearer ${token}` } };
   try {
-    const res = await axios.get(`https://control-panel-backend-k6fr.vercel.app/performance/staff/${id}`, config);
+    const res = await axios.get(`https://admin-panel-backend-alpha.vercel.app/performance/staff/${id}`, config);
     setPerformanceData(res.data); // <-- use fresh data from server
     setFilteredPerformance(res.data);
   } catch (err) {
@@ -160,7 +160,7 @@ useEffect(() => {
     if (!window.confirm("Confirm delete?")) return;
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`https://control-panel-backend-k6fr.vercel.app/performance/${id}`, {
+      await axios.delete(`https://admin-panel-backend-alpha.vercel.app/performance/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Record deleted successfully");
@@ -205,7 +205,7 @@ useEffect(() => {
     const token = localStorage.getItem("token");
   
     axios
-      .get(`https://control-panel-backend-k6fr.vercel.app/hr/${id}`, {
+      .get(`https://admin-panel-backend-alpha.vercel.app/hr/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -228,7 +228,7 @@ useEffect(() => {
   
   //   const checkReminders = async () => {
   //     try {
-  //       const res = await axios.get("https://control-panel-backend-k6fr.vercel.app/performance/reminders/due", {
+  //       const res = await axios.get("https://admin-panel-backend-alpha.vercel.app/performance/reminders/due", {
   //         headers: { Authorization: `Bearer ${token}` }
   //       });
   
@@ -368,7 +368,7 @@ const EditableField = ({ label, dbField, value: initialValue, performanceId, onU
 
   const handleSave = async () => {
     try {
-      const res = await fetch(`https://control-panel-backend-k6fr.vercel.app/performance/${performanceId}`, {
+      const res = await fetch(`https://admin-panel-backend-alpha.vercel.app/performance/${performanceId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

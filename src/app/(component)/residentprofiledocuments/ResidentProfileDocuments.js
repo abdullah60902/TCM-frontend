@@ -19,7 +19,7 @@ const ResidentProfileDocuments = ({ clientId }) => {
   useEffect(() => {
     if (!clientId) return;
 
-    fetch(`https://control-panel-backend-k6fr.vercel.app/resident-documents/client/${clientId}`, {
+    fetch(`https://admin-panel-backend-alpha.vercel.app/resident-documents/client/${clientId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -53,7 +53,7 @@ const ResidentProfileDocuments = ({ clientId }) => {
       fd.append("notes", formData.notes);
       fd.append("file", formData.file);
 
-      const res = await fetch("https://control-panel-backend-k6fr.vercel.app/resident-documents", {
+      const res = await fetch("https://admin-panel-backend-alpha.vercel.app/resident-documents", {
         method: "POST",
         body: fd,
         headers: {
@@ -70,7 +70,7 @@ const ResidentProfileDocuments = ({ clientId }) => {
         setFormData({ category: "", expiryDate: "", notes: "", file: null });
 
         // refresh data
-        const refreshRes = await fetch(`https://control-panel-backend-k6fr.vercel.app/resident-documents/client/${clientId}`, {
+        const refreshRes = await fetch(`https://admin-panel-backend-alpha.vercel.app/resident-documents/client/${clientId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         
@@ -92,7 +92,7 @@ const ResidentProfileDocuments = ({ clientId }) => {
   const deleteDoc = async (id) => {
     if (!confirm("Delete this document?")) return;
 
-    await fetch(`https://control-panel-backend-k6fr.vercel.app/resident-documents/${id}`, {
+    await fetch(`https://admin-panel-backend-alpha.vercel.app/resident-documents/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
