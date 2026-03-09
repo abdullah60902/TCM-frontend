@@ -54,18 +54,19 @@ export default function Page() {
     { icon: <SiSimpleanalytics />, label: "Analytics", href: "/Analytics" },
     { icon: <FaUserCog />, label: "User Management", href: "/User-Management" },
   ];
-   const allowedNavItems =
-  user?.role === "Admin" || user?.role === "Staff" || user?.role === "Client"
-    ? navItems
-    : user?.role === "External" && Array.isArray(user.allowedPages)
-    ? navItems.filter((item) =>
-        user.allowedPages.some(
-          (page) =>
-            page.toLowerCase().replace(/\s+/g, "") ===
-            item.label.toLowerCase().replace(/\s+/g, "")
+  const userRole = user?.role?.toLowerCase();
+  const allowedNavItems =
+    ["admin", "staff", "client"].includes(userRole)
+      ? navItems
+      : userRole === "external" && Array.isArray(user.allowedPages)
+      ? navItems.filter((item) =>
+          user.allowedPages.some(
+            (page) =>
+              page.toLowerCase().replace(/\s+/g, "") ===
+              item.label.toLowerCase().replace(/\s+/g, "")
+          )
         )
-      )
-    : [];
+      : [];
 const [sidebarOpen, setSidebarOpen] = useState(false);
 const [performanceData, setPerformanceData] = useState([]);
 const [filteredPerformance, setFilteredPerformance] = useState([]);
@@ -524,8 +525,8 @@ const data = {
     <div className="p-4 border-t border-gray-700 mt-auto">
       <div className="flex items-center">
         <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#EEEEFF] flex items-center justify-center text-[#4A49B0] font-medium">
-          {user?.fullName
-            .split(" ")
+          {(user?.fullName || "A B")
+                    .split(" ")
             .map((word) => word[0])
             .join("")
             .toUpperCase()}

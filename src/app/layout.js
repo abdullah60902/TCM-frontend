@@ -9,6 +9,8 @@ import NextTopLoader from "nextjs-toploader";
 import { AuthProvider } from '../app/context/AuthContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import '../mockBackend'; // <--- Added mockBackend interceptor
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -16,7 +16,7 @@ function Navbar() {
       
       const handleLogout = () => {
         logout();
-        router.push('/login'); // redirect to login page
+        router.push('/Login'); // smooth client-side redirect
       };
       const {jaa,setJaa} = useAuth()
 
@@ -72,7 +72,7 @@ function Navbar() {
                     <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#EEEEFF] flex items-center justify-center text-[#4A49B0] font-medium">
               {
- user.fullName
+ (user?.fullName || "A B")
     .split(" ")
     .map(word => word[0])
     .join("")
@@ -80,8 +80,8 @@ function Navbar() {
 }
               </div>
                         <div className="ml-2 hidden sm:block">
-                            <p className="text-sm font-medium text-gray-200">{user.fullName}</p>
-                            <p className="text-xs text-gray-400">{user.email}</p>
+                            <p className="text-sm font-medium text-gray-200">{user?.fullName}</p>
+                            <p className="text-xs text-gray-400">{user?.email}</p>
                         </div>
                         <button onClick={handleLogout}
                             id="logout-button"
